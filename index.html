@@ -217,32 +217,40 @@
       <p>© <span id="year"></span> Mohadeseh Yousofy. Built with HTML &amp; CSS.</p>
     </div>
   </footer>
-
   <script>
     // Simple current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ---- GitHub projects loader ----
-    const githubUsername = "spasegirl"; // change if your username is different
+    // ---- GitHub projects loader (FEATURED ONLY) ----
+    const githubUsername = "spasegirl"; // change if needed
     const githubProjectsGrid = document.getElementById("github-projects-grid");
 
+    // Add your repo names here (exactly as on GitHub)
+    const featuredRepos = [
+      "anschreiben-generatorr ",
+      "resume_bias_analysis_datascience ",
+      "task-manager"
+    ];
+
     if (githubProjectsGrid) {
-      fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=12`)
+      fetch(`https://api.github.com/users/${githubUsername}/repos?per_page=100`)
         .then((res) => res.json())
         .then((repos) => {
-          // Filter out forks and very small / empty repos
-          const filtered = repos
-            .filter(r => !r.fork)
-            .filter(r => r.stargazers_count > 0 || (r.description && r.description.length > 0))
-            .slice(0, 6); // show up to 6
+          // Build a map for quick lookup
+          const repoMap = new Map(repos.map(r => [r.name, r]));
 
-          if (filtered.length === 0) {
+          // Keep only the featured ones, in the order of featuredRepos[]
+          const selected = featuredRepos
+            .map(name => repoMap.get(name))
+            .filter(Boolean); // remove undefined (repos that don’t exist)
+
+          if (selected.length === 0) {
             githubProjectsGrid.innerHTML =
-              "<p style='color: var(--muted); font-size: 0.9rem;'>No public projects to showcase yet. Check back soon!</p>";
+              "<p style='color: var(--muted); font-size: 0.9rem;'>No featured projects configured yet. Update the <code>featuredRepos</code> list in the script.</p>";
             return;
           }
 
-          githubProjectsGrid.innerHTML = filtered.map(repo => {
+          githubProjectsGrid.innerHTML = selected.map(repo => {
             const name = repo.name.replace(/-/g, " ");
             const desc = repo.description || "No description provided.";
             const lang = repo.language ? repo.language : "Various";
