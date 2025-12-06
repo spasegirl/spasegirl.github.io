@@ -15,6 +15,7 @@
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#github-projects">GitHub</a>
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -26,7 +27,7 @@
     <section class="hero">
       <div class="container hero-content">
         <div>
-          <p class="hero-kicker">Software & AI Engineering</p>
+          <p class="hero-kicker">Software &amp; AI Engineering</p>
           <h1>Hi, I'm <span class="accent">Mohadeseh&nbsp;Yousofy</span>.</h1>
           <p class="hero-subtitle">
             Dual computer science student specializing in backend development, AI engineering and agentic LLM workflows.
@@ -42,7 +43,7 @@
             <h2>Currently</h2>
             <ul>
               <li>Dual student @ Lufthansa Industry Solutions</li>
-              <li>Working on AI & Data workflows</li>
+              <li>Working on AI &amp; Data workflows</li>
               <li>Graduating B.Sc. in 2026</li>
             </ul>
           </div>
@@ -73,15 +74,15 @@
         <h2>Skills</h2>
         <div class="skills-grid">
           <div class="skill-card">
-            <h3>Backend & Software</h3>
+            <h3>Backend &amp; Software</h3>
             <p>Java, Python, Spring Boot, FastAPI, REST APIs, Docker, Git, SQL, basic Kubernetes, CI/CD.</p>
           </div>
-          <div class="skill-card">
-            <h3>AI & LLMs</h3>
-            <p>RAG, LangChain & LangGraph, Semantic Kernel, Azure AI Foundry, OpenAI API, Hugging Face, vector databases, MLflow.</p>
+          <div class_name="skill-card">
+            <h3>AI &amp; LLMs</h3>
+            <p>RAG, LangChain &amp; LangGraph, Semantic Kernel, Azure AI Foundry, OpenAI API, Hugging Face, vector databases, MLflow.</p>
           </div>
           <div class="skill-card">
-            <h3>ML & CV</h3>
+            <h3>ML &amp; Computer Vision</h3>
             <p>TensorFlow, PyTorch, scikit-learn, OpenCV, industrial computer vision, robotics perception (ROS).</p>
           </div>
           <div class="skill-card">
@@ -92,10 +93,10 @@
       </div>
     </section>
 
-    <!-- PROJECTS -->
+    <!-- CURATED PROJECTS -->
     <section id="projects" class="section">
       <div class="container">
-        <h2>Projects</h2>
+        <h2>Selected Projects</h2>
         <div class="projects-grid">
 
           <article class="project-card">
@@ -111,7 +112,7 @@
           </article>
 
           <article class="project-card">
-            <h3>Industrial Computer Vision & Robotics</h3>
+            <h3>Industrial Computer Vision &amp; Robotics</h3>
             <p>
               Contributed to object detection and anonymization pipelines and robotics applications using ROS
               during my time at Synergeticon. Worked with simulation tools and CV libraries for perception and mapping.
@@ -121,7 +122,7 @@
           </article>
 
           <article class="project-card">
-            <h3>RAG & Agentic Workflows @ Lufthansa</h3>
+            <h3>RAG &amp; Agentic Workflows @ Lufthansa</h3>
             <p>
               Built and evaluated RAG workflows and AI agents using LangChain, Semantic Kernel and Azure AI Foundry,
               including prompt evaluation, latency and context-recall experiments for internal tools.
@@ -130,7 +131,7 @@
           </article>
 
           <article class="project-card">
-            <h3>Children’s Audiobook & Fundraising</h3>
+            <h3>Children’s Audiobook &amp; Fundraising</h3>
             <p>
               Co-created a children’s audiobook and fundraising campaign for Vision for Children e.V. as part of a social
               project, including basic agile project management and coordination.
@@ -142,8 +143,24 @@
       </div>
     </section>
 
+    <!-- GITHUB PROJECTS (AUTO-FETCHED) -->
+    <section id="github-projects" class="section section-alt">
+      <div class="container">
+        <h2>GitHub Projects</h2>
+        <p style="color: var(--muted); max-width: 40rem; font-size: 0.9rem;">
+          A selection of personal projects from my GitHub profile, fetched automatically from
+          <a href="https://github.com/spasegirl" target="_blank" rel="noreferrer" style="color: var(--accent); text-decoration: none;">
+            github.com/spasegirl
+          </a>.
+        </p>
+        <div id="github-projects-grid" class="projects-grid">
+          <!-- Filled by JavaScript -->
+        </div>
+      </div>
+    </section>
+
     <!-- EXPERIENCE -->
-    <section id="experience" class="section section-alt">
+    <section id="experience" class="section">
       <div class="container">
         <h2>Experience</h2>
         <div class="timeline">
@@ -154,7 +171,7 @@
             <ul>
               <li>Developed RAG workflows with LangChain, Azure AI Foundry and LangGraph.</li>
               <li>Built Python modules to orchestrate AI agents via Microsoft Semantic Kernel.</li>
-              <li>Evaluated LLM toolchains with a focus on prompt engineering and workflow automation.</li>
+              <li>Evaluated and benchmarked LLM toolchains with a focus on prompt engineering and automation.</li>
               <li>Supported development of “Digital Jobcards” via process and requirements analysis.</li>
             </ul>
           </div>
@@ -165,7 +182,7 @@
             <ul>
               <li>Developed industrial computer vision systems (object detection, anonymization).</li>
               <li>Implemented robotics-based applications using ROS for perception and mapping.</li>
-              <li>Worked with OpenCV, TensorFlow, PyTorch, MATLAB CV, Gazebo and RViz.</li>
+              <li>Worked with OpenCV, TensorFlow, PyTorch, MATLAB CV, ROS, Gazebo and RViz.</li>
             </ul>
           </div>
 
@@ -197,13 +214,57 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>© <span id="year"></span> Mohadeseh Yousofy. Built with HTML & CSS.</p>
+      <p>© <span id="year"></span> Mohadeseh Yousofy. Built with HTML &amp; CSS.</p>
     </div>
   </footer>
 
   <script>
     // Simple current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ---- GitHub projects loader ----
+    const githubUsername = "spasegirl"; // change if your username is different
+    const githubProjectsGrid = document.getElementById("github-projects-grid");
+
+    if (githubProjectsGrid) {
+      fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=12`)
+        .then((res) => res.json())
+        .then((repos) => {
+          // Filter out forks and very small / empty repos
+          const filtered = repos
+            .filter(r => !r.fork)
+            .filter(r => r.stargazers_count > 0 || (r.description && r.description.length > 0))
+            .slice(0, 6); // show up to 6
+
+          if (filtered.length === 0) {
+            githubProjectsGrid.innerHTML =
+              "<p style='color: var(--muted); font-size: 0.9rem;'>No public projects to showcase yet. Check back soon!</p>";
+            return;
+          }
+
+          githubProjectsGrid.innerHTML = filtered.map(repo => {
+            const name = repo.name.replace(/-/g, " ");
+            const desc = repo.description || "No description provided.";
+            const lang = repo.language ? repo.language : "Various";
+            const stars = repo.stargazers_count || 0;
+            const updated = new Date(repo.updated_at).toLocaleDateString();
+
+            return `
+              <article class="project-card">
+                <h3>${name}</h3>
+                <p>${desc}</p>
+                <p class="project-meta">${lang} · ⭐ ${stars} · Updated ${updated}</p>
+                <a href="${repo.html_url}" target="_blank" rel="noreferrer">View on GitHub →</a>
+              </article>
+            `;
+          }).join("");
+        })
+        .catch((err) => {
+          console.error("Error loading GitHub repos:", err);
+          githubProjectsGrid.innerHTML =
+            "<p style='color: var(--muted); font-size: 0.9rem;'>Couldn’t load GitHub projects right now.</p>";
+        });
+    }
   </script>
 </body>
 </html>

@@ -215,7 +215,7 @@ nav a:hover {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.3rem;
 }
 
@@ -321,7 +321,7 @@ nav a:hover {
   }
 
   nav {
-    display: none; /* keep it super simple for now */
+    display: none; /* simple mobile version */
   }
 
   .section {
