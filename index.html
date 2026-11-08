@@ -79,26 +79,94 @@
         <div class="section-heading" data-reveal>
           <p class="section-kicker">System view</p>
           <h2>Building AI that connects to the enterprise</h2>
-          <p>AI agents sit in the middle of the tools, data, and services people already use.</p>
+          <p>From a workplace request to grounded, governed action, then back as a verified result.</p>
         </div>
-        <div class="architecture-map">
-          <svg class="architecture-lines" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true">
-            <line id="edge-teams" x1="500" y1="280" x2="165" y2="90" />
-            <line id="edge-graph" x1="500" y1="280" x2="835" y2="90" />
-            <line id="edge-outlook" x1="500" y1="280" x2="165" y2="280" />
-            <line id="edge-sharepoint" x1="500" y1="280" x2="835" y2="280" />
-            <line id="edge-apis" x1="500" y1="280" x2="165" y2="470" />
-            <line id="edge-azure" x1="500" y1="280" x2="500" y2="470" />
-            <line id="edge-aws" x1="500" y1="280" x2="835" y2="470" />
+        <div class="architecture-map" role="group" aria-label="Enterprise AI workflow from request through context, agent orchestration, human approval, and tool execution to a returned result">
+          <svg class="architecture-lines" aria-hidden="true" focusable="false">
+            <defs>
+              <marker id="architecture-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M 0 0 L 8 4 L 0 8 z" />
+              </marker>
+            </defs>
+            <path id="edge-request-context" data-from="stage-request" data-to="stage-context" />
+            <path id="edge-context-agent" data-from="stage-context" data-to="stage-agent" />
+            <path id="edge-agent-approval" data-from="stage-agent" data-to="stage-approval" />
+            <path id="edge-approval-action" data-from="stage-approval" data-to="stage-action" />
+            <path id="edge-action-result" data-from="stage-action" data-to="response-result" />
+            <path id="edge-agent-runtime" data-from="stage-agent" data-to="runtime-layer" />
           </svg>
-          <button class="system-node node-teams" type="button" data-edge="edge-teams" aria-pressed="false">Microsoft Teams</button>
-          <button class="system-node node-graph" type="button" data-edge="edge-graph" aria-pressed="false">Microsoft Graph</button>
-          <button class="system-node node-outlook" type="button" data-edge="edge-outlook" aria-pressed="false">Outlook</button>
-          <div class="agent-node"><span class="agent-node-mark" aria-hidden="true">✳</span><span>AI Agent</span></div>
-          <button class="system-node node-sharepoint" type="button" data-edge="edge-sharepoint" aria-pressed="false">SharePoint</button>
-          <button class="system-node node-apis" type="button" data-edge="edge-apis" aria-pressed="false">Enterprise APIs</button>
-          <button class="system-node node-azure" type="button" data-edge="edge-azure" aria-pressed="false">Azure</button>
-          <button class="system-node node-aws" type="button" data-edge="edge-aws" aria-pressed="false">AWS</button>
+
+          <div class="architecture-flow">
+            <article class="flow-stage" id="stage-request">
+              <div class="flow-stage-heading"><span>01</span><span>INPUT</span></div>
+              <h3>Request</h3>
+              <p>Workplace channels</p>
+              <div class="architecture-nodes">
+                <button class="system-node" type="button" data-edge="edge-request-context" aria-pressed="false">Microsoft Teams</button>
+                <button class="system-node" type="button" data-edge="edge-request-context" aria-pressed="false">Outlook</button>
+              </div>
+              <small>Prompt or meeting task</small>
+            </article>
+
+            <article class="flow-stage" id="stage-context">
+              <div class="flow-stage-heading"><span>02</span><span>GROUND</span></div>
+              <h3>Find context</h3>
+              <p>Enterprise data</p>
+              <div class="architecture-nodes">
+                <button class="system-node" type="button" data-edge="edge-context-agent" aria-pressed="false">Microsoft Graph</button>
+                <button class="system-node" type="button" data-edge="edge-context-agent" aria-pressed="false">SharePoint</button>
+                <button class="system-node" type="button" data-edge="edge-context-agent" aria-pressed="false">Meeting transcripts</button>
+                <button class="system-node" type="button" data-edge="edge-context-agent" aria-pressed="false">RAG / retrieval</button>
+              </div>
+            </article>
+
+            <article class="flow-stage flow-stage-agent" id="stage-agent">
+              <div class="flow-stage-heading"><span>03</span><span>ORCHESTRATE</span></div>
+              <div class="agent-node" id="agent-core">
+                <span class="agent-node-mark" aria-hidden="true">✳</span>
+                <span class="agent-core-label">LLM + WORKFLOW</span>
+                <span class="agent-core-title">AI Agent</span>
+              </div>
+              <div class="agent-capabilities" aria-label="Agent capabilities">
+                <span>Reason</span><span>Route tools</span><span>MCP</span><span>Coordinate</span>
+              </div>
+            </article>
+
+            <article class="flow-stage" id="stage-approval">
+              <div class="flow-stage-heading"><span>04</span><span>GOVERN</span></div>
+              <h3>Control action</h3>
+              <p>Access &amp; oversight</p>
+              <div class="architecture-nodes">
+                <button class="system-node" type="button" data-edge="edge-agent-approval" aria-pressed="false">Human approval</button>
+                <button class="system-node" type="button" data-edge="edge-agent-approval" aria-pressed="false">Security &amp; tool access</button>
+                <button class="system-node" type="button" data-edge="edge-agent-approval" aria-pressed="false">Evaluation</button>
+              </div>
+            </article>
+
+            <article class="flow-stage" id="stage-action">
+              <div class="flow-stage-heading"><span>05</span><span>EXECUTE</span></div>
+              <h3>Use tools</h3>
+              <p>Connected systems</p>
+              <div class="architecture-nodes">
+                <button class="system-node" type="button" data-edge="edge-approval-action" aria-pressed="false">Enterprise APIs</button>
+                <button class="system-node" type="button" data-edge="edge-approval-action" aria-pressed="false">Power Automate</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="architecture-runtime" id="runtime-layer">
+            <div class="runtime-label"><span class="runtime-mark" aria-hidden="true">⌘</span><div><strong>Runtime</strong><small>Deployment foundation</small></div></div>
+            <div class="architecture-nodes">
+              <button class="system-node" type="button" data-edge="edge-agent-runtime" aria-pressed="false">Azure</button>
+              <button class="system-node" type="button" data-edge="edge-agent-runtime" aria-pressed="false">AWS</button>
+              <button class="system-node" type="button" data-edge="edge-agent-runtime" aria-pressed="false">Docker</button>
+            </div>
+          </div>
+
+          <div class="architecture-response" id="response-result">
+            <span class="response-status" aria-hidden="true"></span>
+            <div><strong>Verified result</strong><small>Delivered to Teams or Outlook</small></div>
+          </div>
         </div>
       </div>
     </section>
@@ -352,10 +420,39 @@
       navSections.forEach((section) => navObserver.observe(section));
     }
 
+    const architectureMap = document.querySelector(".architecture-map");
+
+    if (architectureMap) {
+      const architectureSvg = architectureMap.querySelector(".architecture-lines");
+      const architectureEdges = [...architectureSvg.querySelectorAll("path")];
+      const drawArchitectureEdges = () => {
+        const mapBounds = architectureMap.getBoundingClientRect();
+        architectureSvg.setAttribute("viewBox", `0 0 ${mapBounds.width} ${mapBounds.height}`);
+
+        architectureEdges.forEach((edge) => {
+          const from = document.getElementById(edge.dataset.from)?.getBoundingClientRect();
+          const to = document.getElementById(edge.dataset.to)?.getBoundingClientRect();
+          if (!from || !to) return;
+
+          const startX = from.left + from.width / 2 - mapBounds.left;
+          const startY = from.top + from.height / 2 - mapBounds.top;
+          const endX = to.left + to.width / 2 - mapBounds.left;
+          const endY = to.top + to.height / 2 - mapBounds.top;
+          const midpointY = startY + (endY - startY) / 2;
+          edge.setAttribute("d", `M ${startX} ${startY} C ${startX} ${midpointY}, ${endX} ${midpointY}, ${endX} ${endY}`);
+        });
+      };
+
+      drawArchitectureEdges();
+      if ("ResizeObserver" in window) new ResizeObserver(drawArchitectureEdges).observe(architectureMap);
+      else window.addEventListener("resize", drawArchitectureEdges, { passive: true });
+    }
+
     document.querySelectorAll(".system-node").forEach((node) => {
       const edge = document.getElementById(node.dataset.edge);
+      const edgeNodes = [...document.querySelectorAll(`[data-edge="${node.dataset.edge}"]`)];
       const setEdge = (active) => {
-        if (edge) edge.classList.toggle("is-active", active || node.getAttribute("aria-pressed") === "true");
+        if (edge) edge.classList.toggle("is-active", active || edgeNodes.some((edgeNode) => edgeNode.getAttribute("aria-pressed") === "true"));
       };
 
       node.addEventListener("pointerenter", () => setEdge(true));

@@ -373,58 +373,162 @@ nav a:hover::after {
 .architecture-map {
   position: relative;
   display: grid;
-  width: min(100%, 920px);
-  min-height: 500px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: repeat(3, minmax(0, 1fr));
-  align-items: center;
-  justify-items: center;
+  gap: 1rem;
+  width: min(100%, 1040px);
   margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(rgba(139, 151, 196, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 151, 196, 0.035) 1px, transparent 1px),
+    rgba(8, 10, 20, 0.5);
+  background-size: 32px 32px;
   isolation: isolate;
 }
 
 .architecture-lines {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   inset: 0;
   width: 100%;
   height: 100%;
   overflow: visible;
+  pointer-events: none;
 }
 
-.architecture-lines line {
-  stroke: rgba(169, 180, 226, 0.4);
+.architecture-lines > path {
+  fill: none;
+  stroke: rgba(169, 180, 226, 0.44);
   stroke-width: 1.7;
-  stroke-dasharray: 5 7;
+  marker-end: url(#architecture-arrow);
   transition: stroke 180ms ease, stroke-width 180ms ease;
 }
 
-.architecture-lines line.is-active {
+.architecture-lines > path.is-active {
   stroke: var(--accent-blue);
-  stroke-width: 2.7;
+  stroke-width: 2.6;
 }
 
-.system-node,
-.agent-node {
+.architecture-lines marker path {
+  fill: var(--accent-blue);
+  stroke: none;
+}
+
+.architecture-flow {
+  position: relative;
+  position: relative;
   z-index: 1;
-  display: inline-flex;
-  min-height: 46px;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.55rem 0.9rem;
-  border: 1px solid var(--line-strong);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.flow-stage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+  min-width: 0;
+  padding: 0.9rem;
+  border: 1px solid var(--line);
   border-radius: 6px;
-  background: #101528;
-  color: var(--muted-strong);
-  font-size: 0.88rem;
-  font-weight: 600;
-  text-align: center;
-  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  background: rgba(14, 18, 33, 0.97);
+  transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.flow-stage:hover,
+.flow-stage:focus-within {
+  border-color: var(--line-strong);
+  background: #111629;
+  transform: translateY(-2px);
+}
+
+.flow-stage-agent {
+  align-content: center;
+  border-color: rgba(167, 139, 250, 0.45);
+  background: rgba(22, 21, 43, 0.98);
+}
+
+.flow-stage-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
+.flow-stage-heading span:first-child {
+  color: var(--accent);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.flow-stage-heading span:last-child {
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.flow-stage h3 {
+  margin: 0;
+  color: var(--text);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.flow-stage > p {
+  margin: -0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.architecture-nodes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.flow-stage .architecture-nodes {
+  display: grid;
+  justify-items: stretch;
+  align-content: start;
+}
+
+.flow-stage small {
+  margin-top: auto;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.architecture-middle {
+  position: relative;
+  z-index: 1;
+  display: contents;
 }
 
 .system-node {
+  z-index: 1;
+  display: inline-flex;
+  max-width: 100%;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  padding: 0.38rem 0.52rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  background: #101528;
+  color: var(--muted-strong);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-align: center;
+  overflow-wrap: anywhere;
   cursor: pointer;
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
 .system-node:hover,
@@ -436,31 +540,127 @@ nav a:hover::after {
   transform: translateY(-2px);
 }
 
+.architecture-core {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  gap: 0.55rem;
+  min-width: 0;
+  padding: 0.65rem;
+  border: 1px solid rgba(167, 139, 250, 0.24);
+  border-radius: 7px;
+  background: rgba(18, 20, 38, 0.98);
+}
+
 .agent-node {
-  min-width: 150px;
-  min-height: 78px;
+  display: flex;
+  min-width: 0;
+  min-height: 112px;
   flex-direction: column;
-  border-color: rgba(167, 139, 250, 0.6);
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 0.12rem;
+  padding: 0.7rem;
+  border: 1px solid rgba(167, 139, 250, 0.62);
+  border-radius: 6px;
   background: linear-gradient(145deg, rgba(98, 77, 165, 0.38), rgba(17, 22, 41, 0.98));
   color: var(--text);
   box-shadow: 0 0 32px rgba(123, 94, 210, 0.12);
   font-family: "Space Grotesk", sans-serif;
-  font-size: 1rem;
 }
 
 .agent-node-mark {
   color: var(--accent);
-  font-size: 1.15rem;
+  font-size: 1.3rem;
+  line-height: 1;
 }
 
-.node-teams { grid-area: 1 / 1; }
-.node-graph { grid-area: 1 / 3; }
-.node-outlook { grid-area: 2 / 1; }
-.agent-node { grid-area: 2 / 2; }
-.node-sharepoint { grid-area: 2 / 3; }
-.node-apis { grid-area: 3 / 1; }
-.node-azure { grid-area: 3 / 2; }
-.node-aws { grid-area: 3 / 3; }
+.agent-core-label {
+  color: var(--accent-blue);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.agent-core-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.agent-capabilities {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.agent-capabilities span {
+  padding: 0.28rem 0.35rem;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 4px;
+  color: #d0c4ff;
+  font-size: 0.66rem;
+  text-align: center;
+}
+
+.architecture-runtime,
+.architecture-response {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 72px;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: rgba(14, 18, 33, 0.97);
+}
+
+.architecture-runtime {
+  justify-content: space-between;
+}
+
+.runtime-label,
+.architecture-response > div {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.runtime-label strong,
+.architecture-response strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.8rem;
+}
+
+.runtime-label small,
+.architecture-response small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.runtime-mark {
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+.architecture-response {
+  justify-self: end;
+  min-width: 220px;
+  border-color: rgba(121, 186, 255, 0.28);
+}
+
+.response-status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  box-shadow: 0 0 12px rgba(121, 186, 255, 0.35);
+}
 
 .process-section {
   overflow: hidden;
@@ -999,20 +1199,32 @@ html.js-enabled [data-reveal].is-visible {
   }
 
   .architecture-map {
-    min-height: 430px;
+    gap: 0.75rem;
+    padding: 0.75rem;
   }
 
-  .system-node {
-    max-width: 100%;
-    min-height: 42px;
-    padding: 0.45rem 0.5rem;
-    font-size: 0.72rem;
+  .architecture-middle {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .architecture-group,
+  .architecture-layer {
+    padding: 0.8rem;
+  }
+
+  .architecture-core {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .agent-node {
-    min-width: 100px;
-    min-height: 68px;
-    font-size: 0.88rem;
+    min-height: 94px;
+  }
+
+  .system-node {
+    min-height: 42px;
+    padding: 0.45rem 0.5rem;
+    font-size: 0.72rem;
   }
 
   .case-study {
@@ -1100,11 +1312,17 @@ html.js-enabled [data-reveal].is-visible {
   }
 
   .architecture-map {
-    min-height: 390px;
+    gap: 0.6rem;
+    padding: 0.6rem;
   }
 
   .system-node {
     font-size: 0.68rem;
+  }
+
+  .architecture-layer-heading span:last-child {
+    width: 100%;
+    margin-left: 1.35rem;
   }
 
   .case-flow {
