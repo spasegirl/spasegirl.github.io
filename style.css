@@ -279,24 +279,29 @@ nav a:hover::after {
 .hero-profile {
   display: flex;
   align-items: center;
-  gap: 1rem;
   padding-bottom: 1.1rem;
   border-bottom: 1px solid var(--line);
 }
 
-.profile-photo {
-  width: 76px;
-  height: 76px;
-  flex: 0 0 auto;
-  border: 1px solid rgba(167, 139, 250, 0.6);
-  border-radius: 6px;
-  object-fit: cover;
+.hero-profile > div {
+  width: 100%;
 }
 
 .profile-location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin: 0;
   color: var(--muted);
   font-size: 0.82rem;
+}
+
+.profile-location::before {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  content: "";
 }
 
 .profile-focus {
