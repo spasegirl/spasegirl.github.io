@@ -11,12 +11,13 @@
   <header class="site-header">
     <div class="container nav-container">
       <div class="logo">Mahi's Portfolio<span>.</span></div>
-      <nav>
+      <nav aria-label="Main navigation">
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
+        <a href="#architecture">Architecture</a>
         <a href="#projects">Projects</a>
-          <a href="#github-projects">Open Source</a>
         <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#github-projects">Open Source</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -24,22 +25,29 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="top">
+      <div class="hero-grid" aria-hidden="true"></div>
       <div class="container hero-content">
-        <div>
+        <div class="hero-copy" data-reveal>
           <p class="hero-kicker">Technical Consulting · AI Engineering · Agentic AI</p>
-          <h1>Hi, I'm <span class="accent">Mohadeseh&nbsp;Yousofy</span>.</h1>
-          <p class="hero-subtitle">
-            Technical Consultant and AI Engineer specializing in enterprise AI agents, LLM-based applications, and agentic workflows.
-            I design and build AI solutions from architecture and prototyping through enterprise integration, testing, and deployment.
-          </p>
+          <h1>Mohadeseh<br /><span class="accent">Yousofy</span></h1>
+          <p class="hero-role">Technical Consultant &amp; AI Engineer</p>
+          <p class="hero-subtitle">I build enterprise AI agents that connect LLMs with real tools, data, and workflows.</p>
           <div class="hero-actions">
-            <a class="btn primary" href="#projects">View projects</a>
+            <a class="btn primary" href="#projects">Explore My Work <span aria-hidden="true">↘</span></a>
             <a class="btn ghost" href="https://github.com/spasegirl" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn ghost" href="https://linkedin.com/in/mohadeseh-y-21a172215" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
         </div>
-        <div class="hero-side">
+        <div class="hero-side" data-reveal>
           <div class="hero-card">
+            <div class="hero-profile">
+              <img class="profile-photo" src="https://avatars.githubusercontent.com/u/93318147?v=4" alt="Mohadeseh Yousofy's GitHub profile photo" />
+              <div>
+                <p class="profile-location">Hamburg, Germany</p>
+                <p class="profile-focus">Enterprise AI,<br />made practical.</p>
+              </div>
+            </div>
             <h2>Currently</h2>
             <ul>
               <li>Technical Consultant &amp; AI Engineer @ WM Reply</li>
@@ -52,150 +60,152 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
+    <section id="about" class="section intro-section" data-reveal>
       <div class="container">
-        <h2>About</h2>
-        <p>
+        <p class="section-kicker">Introduction</p>
+        <h2>Engineering beyond the demo.</h2>
+        <p class="intro-lead">
           I'm a <strong>Technical Consultant and AI Engineer</strong> based in Hamburg, working on enterprise AI agents,
-          LLM-based applications, and agentic workflows.
+          LLM applications, and agentic workflows.
         </p>
         <p>
-          My work combines <strong>AI engineering, software engineering, and technical consulting</strong>. I design and implement
-          AI solutions across Microsoft 365, Azure, AWS, and modern agent runtimes, including RAG, enterprise APIs, workflow automation,
-          and tool-enabled agents.
-        </p>
-        <p>
-          I particularly enjoy taking AI systems beyond prototypes: integrating them into real enterprise environments, connecting them
-          to existing tools and data sources, and working through architecture, security, testing, deployment, and operational challenges.
+          I combine <strong>AI engineering, software engineering, and technical consulting</strong> to integrate systems with Microsoft 365,
+          Azure, AWS, and modern agent runtimes. My work spans RAG, enterprise APIs, workflow automation, security, testing, and deployment.
         </p>
       </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section section-alt">
+    <section id="architecture" class="section architecture-section section-alt">
       <div class="container">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <h3>AI &amp; Agentic Systems</h3>
-            <p>LLM Applications · AI Agents · Agentic Workflows · RAG · Tool Use · MCP · Prompt Engineering · Human-in-the-Loop · Agent Evaluation</p>
-          </div>
-          <div class="skill-card">
-            <h3>Microsoft &amp; Enterprise AI</h3>
-            <p>Microsoft 365 · Microsoft Graph · Copilot Studio · Azure AI Foundry · Microsoft 365 Copilot · Teams · SharePoint · Outlook · Power Automate</p>
-          </div>
-          <div class="skill-card">
-            <h3>Agent Platforms &amp; Frameworks</h3>
-            <p>NemoClaw · Hermes · OpenClaw · Semantic Kernel · LangChain · LangGraph · Microsoft Agent Framework</p>
-          </div>
-          <div class="skill-card">
-            <h3>Software &amp; Cloud Engineering</h3>
-            <p>Python · Java · FastAPI · REST APIs · Docker · Git · CI/CD · Azure · AWS · Function Apps · SQL</p>
-          </div>
-          <div class="skill-card">
-            <h3>AI / ML</h3>
-            <p>PyTorch · TensorFlow · scikit-learn · OpenCV · Hugging Face · MLflow · Vector Databases · Computer Vision</p>
-          </div>
+        <div class="section-heading" data-reveal>
+          <p class="section-kicker">System view</p>
+          <h2>Building AI that connects to the enterprise</h2>
+          <p>AI agents sit in the middle of the tools, data, and services people already use.</p>
+        </div>
+        <div class="architecture-map" data-reveal>
+          <svg class="architecture-lines" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true">
+            <line id="edge-teams" x1="500" y1="280" x2="165" y2="90" />
+            <line id="edge-graph" x1="500" y1="280" x2="835" y2="90" />
+            <line id="edge-outlook" x1="500" y1="280" x2="165" y2="280" />
+            <line id="edge-sharepoint" x1="500" y1="280" x2="835" y2="280" />
+            <line id="edge-apis" x1="500" y1="280" x2="165" y2="470" />
+            <line id="edge-azure" x1="500" y1="280" x2="500" y2="470" />
+            <line id="edge-aws" x1="500" y1="280" x2="835" y2="470" />
+          </svg>
+          <button class="system-node node-teams" type="button" data-edge="edge-teams" aria-pressed="false">Microsoft Teams</button>
+          <button class="system-node node-graph" type="button" data-edge="edge-graph" aria-pressed="false">Microsoft Graph</button>
+          <button class="system-node node-outlook" type="button" data-edge="edge-outlook" aria-pressed="false">Outlook</button>
+          <div class="agent-node"><span class="agent-node-mark" aria-hidden="true">✳</span><span>AI Agent</span></div>
+          <button class="system-node node-sharepoint" type="button" data-edge="edge-sharepoint" aria-pressed="false">SharePoint</button>
+          <button class="system-node node-apis" type="button" data-edge="edge-apis" aria-pressed="false">Enterprise APIs</button>
+          <button class="system-node node-azure" type="button" data-edge="edge-azure" aria-pressed="false">Azure</button>
+          <button class="system-node node-aws" type="button" data-edge="edge-aws" aria-pressed="false">AWS</button>
         </div>
       </div>
     </section>
 
-    <!-- CURATED PROJECTS -->
-    <section id="projects" class="section">
+    <section id="approach" class="section process-section">
       <div class="container">
-        <h2>Selected Projects</h2>
-        <div class="projects-grid">
+        <div class="section-heading" data-reveal>
+          <p class="section-kicker">How I build AI systems</p>
+          <h2>From requirements to operations</h2>
+        </div>
+        <ol class="process-list">
+          <li class="process-step" data-reveal><span>01</span><h3>Understand</h3><p>Requirements</p></li>
+          <li class="process-step" data-reveal><span>02</span><h3>Design</h3><p>Architecture</p></li>
+          <li class="process-step" data-reveal><span>03</span><h3>Build</h3><p>Agent + Tools</p></li>
+          <li class="process-step" data-reveal><span>04</span><h3>Integrate</h3><p>Enterprise Systems</p></li>
+          <li class="process-step" data-reveal><span>05</span><h3>Test &amp; Secure</h3><p>Quality &amp; access</p></li>
+          <li class="process-step" data-reveal><span>06</span><h3>Operate</h3><p>Deploy &amp; Monitor</p></li>
+        </ol>
+      </div>
+    </section>
 
-          <article class="project-card">
-            <h3>Enterprise Digital Employee &amp; Agentic Workflows</h3>
-            <p>
-              Designed and implemented enterprise Digital Employee capabilities combining AI agents, Microsoft Teams, Microsoft Graph,
-              SharePoint, Outlook, and meeting transcripts. Built automated workflows that transform meeting content into executable
-              agent tasks and return results through enterprise channels.
-            </p>
-            <p class="project-meta">Microsoft 365 · Microsoft Graph · Azure · Python · AI Agents · Workflow Automation</p>
+    <section id="projects" class="section projects-section section-alt">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="section-kicker">Selected work</p>
+          <h2>Systems, not just prompts.</h2>
+        </div>
+        <div class="case-studies">
+          <article class="case-study" data-reveal>
+            <div class="case-heading"><span class="case-number">01</span><h3>Enterprise Digital Employee &amp; Agentic Workflows</h3></div>
+            <div class="case-content">
+              <div class="case-detail case-context"><h4>Context</h4><p>Enterprise workflows spanning Microsoft Teams, Microsoft Graph, Outlook, SharePoint, and meeting transcripts.</p></div>
+              <div class="case-detail case-approach"><h4>Build &amp; approach</h4><p>Designed Digital Employee capabilities and transcript-driven automation that extracts tasks, runs agent workflows, and returns verified results through enterprise channels.</p></div>
+              <div class="case-flow" aria-label="Workflow: meeting content to agent tasks to enterprise channels"><span>Meeting content</span><i aria-hidden="true">→</i><span>Agent tasks</span><i aria-hidden="true">→</i><span>Enterprise channels</span></div>
+              <div class="tag-list" aria-label="Technologies"><span>Microsoft 365</span><span>Microsoft Graph</span><span>Azure</span><span>Python</span><span>AI Agents</span><span>Workflow Automation</span></div>
+            </div>
           </article>
-
-          <article class="project-card">
-            <h3>Enterprise Agent Runtime &amp; Tool Integration</h3>
-            <p>
-              Worked with modern agent runtimes including NemoClaw, Hermes, and OpenClaw, covering agent configuration, skills, memory,
-              tool integration, security concepts, observability, and deployment.
-            </p>
-            <p class="project-meta">NemoClaw · Hermes · OpenClaw · MCP · Python · Docker</p>
+          <article class="case-study" data-reveal>
+            <div class="case-heading"><span class="case-number">02</span><h3>Agent Runtime &amp; Tool Integration</h3></div>
+            <div class="case-content">
+              <div class="case-detail case-context"><h4>Context</h4><p>Working with modern agent runtimes and their surrounding capabilities.</p></div>
+              <div class="case-detail case-approach"><h4>Build &amp; approach</h4><p>Covered agent configuration, skills, memory, tool integration, security concepts, observability, and deployment.</p></div>
+              <div class="case-flow" aria-label="Agent runtime connected to skills and memory, tools, and deployment"><span>Agent runtime</span><i aria-hidden="true">→</i><span>Skills + memory</span><i aria-hidden="true">→</i><span>Tools + MCP</span><i aria-hidden="true">→</i><span>Deployment</span></div>
+              <div class="tag-list" aria-label="Technologies"><span>NemoClaw</span><span>Hermes</span><span>OpenClaw</span><span>MCP</span><span>Python</span><span>Docker</span></div>
+            </div>
           </article>
-
-          <article class="project-card">
-            <h3>RAG &amp; Agentic AI</h3>
-            <p>
-              Built and evaluated RAG and agentic AI workflows using LangChain, LangGraph, Semantic Kernel, and Azure AI Foundry,
-              including retrieval, prompt evaluation, context quality, and workflow orchestration.
-            </p>
-            <p class="project-meta">LangChain · LangGraph · Semantic Kernel · Azure AI Foundry</p>
+          <article class="case-study" data-reveal>
+            <div class="case-heading"><span class="case-number">03</span><h3>RAG &amp; Agentic AI</h3></div>
+            <div class="case-content">
+              <div class="case-detail case-context"><h4>Context</h4><p>Retrieval-augmented generation and agentic workflows for internal tools.</p></div>
+              <div class="case-detail case-approach"><h4>Build &amp; approach</h4><p>Built and evaluated retrieval, prompt quality, context quality, and workflow orchestration across RAG and agentic AI workflows.</p></div>
+              <div class="case-flow" aria-label="RAG workflow: retrieval to context evaluation to orchestration"><span>Retrieval</span><i aria-hidden="true">→</i><span>Context evaluation</span><i aria-hidden="true">→</i><span>Workflow orchestration</span></div>
+              <div class="tag-list" aria-label="Technologies"><span>LangChain</span><span>LangGraph</span><span>Semantic Kernel</span><span>Azure AI Foundry</span></div>
+            </div>
           </article>
+        </div>
+      </div>
+    </section>
 
-          <article class="project-card">
+    <section id="earlier-work" class="section earlier-section">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="section-kicker">Earlier work</p>
+          <h2>Foundations in vision, robotics &amp; data</h2>
+        </div>
+        <div class="earlier-grid">
+          <article class="earlier-card" data-reveal>
+            <span class="case-number">01 / COMPUTER VISION</span>
             <h3>Industrial Computer Vision &amp; Robotics</h3>
-            <p>
-              Contributed to object detection and anonymization pipelines and robotics applications using ROS at Synergeticon,
-              working with simulation tools and computer vision libraries for perception and mapping.
-            </p>
-            <p class="project-meta">OpenCV · TensorFlow · PyTorch · ROS · Gazebo</p>
+            <p>Contributed to object detection and anonymization pipelines and robotics applications using ROS at Synergeticon, working with simulation tools and computer vision libraries for perception and mapping.</p>
+            <div class="tag-list" aria-label="Technologies"><span>OpenCV</span><span>TensorFlow</span><span>PyTorch</span><span>ROS</span><span>Gazebo</span></div>
           </article>
-
-          <article class="project-card">
-            <h3>“Size Matters in E-Commerce” – Data Science Project</h3>
-            <p>
-              Analyzed customer behavior for an e-commerce use case as part of the TechLabs Hamburg Digital Shaper program,
-              using Python and machine learning to explore customer patterns and sizing issues.
-            </p>
-            <p class="project-meta">Python · Machine Learning · Data Analysis</p>
-            <a href="https://medium.com/@TechLabs_Hamburg/size-matters-in-e-commerce-data-driven-analysis-of-undesirable-consumer-behaviors-observed-at-76a33c00f8ce"
-               target="_blank" rel="noreferrer">Read article →</a>
+          <article class="earlier-card" data-reveal>
+            <span class="case-number">02 / DATA SCIENCE</span>
+            <h3>“Size Matters in E-Commerce”</h3>
+            <p>Analyzed customer behavior for an e-commerce use case as part of the TechLabs Hamburg Digital Shaper program, using Python and machine learning to explore customer patterns and sizing issues.</p>
+            <div class="tag-list" aria-label="Technologies"><span>Python</span><span>Machine Learning</span><span>Data Analysis</span></div>
+            <a href="https://medium.com/@TechLabs_Hamburg/size-matters-in-e-commerce-data-driven-analysis-of-undesirable-consumer-behaviors-observed-at-76a33c00f8ce" target="_blank" rel="noreferrer">Read article <span aria-hidden="true">↗</span></a>
           </article>
-
         </div>
       </div>
     </section>
 
-    <!-- GITHUB PROJECTS (AUTO-FETCHED) -->
-    <section id="github-projects" class="section section-alt">
+    <section id="experience" class="section experience-section section-alt">
       <div class="container">
-        <h2>Open Source &amp; Personal Projects</h2>
-        <p style="color: var(--muted); max-width: 40rem; font-size: 0.9rem;">
-          A selection of personal projects from my GitHub profile, fetched automatically from
-          <a href="https://github.com/spasegirl" target="_blank" rel="noreferrer" style="color: var(--accent); text-decoration: none;">
-            github.com/spasegirl
-          </a>.
-        </p>
-        <div id="github-projects-grid" class="projects-grid">
-          <!-- Filled by JavaScript -->
+        <div class="section-heading" data-reveal>
+          <p class="section-kicker">Experience</p>
+          <h2>A progression into enterprise AI</h2>
         </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
-      <div class="container">
-        <h2>Experience</h2>
+        <ol class="progression" aria-label="Professional progression" data-reveal>
+          <li>Software Engineering</li><li>AI / ML</li><li>RAG &amp; LLMs</li><li>Agentic AI</li><li>Technical Consulting</li>
+        </ol>
         <div class="timeline">
 
-          <div class="timeline-item">
+          <div class="timeline-item" data-reveal>
             <h3>Technical Consultant / AI Engineer – WM Reply</h3>
             <p class="timeline-meta">Apr 2026 – Present · Hamburg, Germany</p>
             <ul>
-              <li>Design and implement enterprise AI agents and agentic workflows from requirements analysis and technical architecture through deployment and testing.</li>
-              <li>Develop Digital Employee solutions integrating Microsoft Teams, Microsoft Graph, Outlook, SharePoint, meeting transcripts, APIs, and enterprise systems.</li>
-              <li>Build low-code and pro-code agent solutions using Copilot Studio, Azure AI Foundry, NemoClaw, Hermes, and Microsoft 365 Copilot.</li>
-              <li>Develop transcript-driven automation workflows that extract tasks from meetings, execute agent workflows, and deliver verified results through enterprise channels.</li>
-              <li>Implement human-in-the-loop approval, security, tool-access, and automation concepts for autonomous agents.</li>
-              <li>Develop AI software components and integrations across Azure and AWS, including APIs, modular architectures, and LLM-based services.</li>
-              <li>Design technical architectures and deliver workshops, demos, and client-facing presentations for enterprise AI solutions.</li>
+              <li>Design enterprise AI agents and agentic workflows, from requirements analysis and technical architecture through testing and deployment.</li>
+              <li>Integrate Digital Employee solutions with Microsoft 365, Microsoft Graph, Teams, Outlook, SharePoint, meeting transcripts, APIs, and enterprise systems.</li>
+              <li>Build transcript-driven automation and agent workflows with tools, human-in-the-loop approvals, security, and tool-access concepts.</li>
+              <li>Engineer AI components and integrations across Azure and AWS, and deliver workshops, demos, and client-facing presentations.</li>
             </ul>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" data-reveal>
             <h3>Dual Student – Lufthansa Industry Solutions</h3>
             <p class="timeline-meta">Oct 2022 – Mar 2026 · Norderstedt, Germany</p>
             <ul>
@@ -206,7 +216,7 @@
             </ul>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" data-reveal>
             <h3>Working Student – Synergeticon GmbH</h3>
             <p class="timeline-meta">Nov 2021 – Sep 2022 · Hamburg, Germany</p>
             <ul>
@@ -216,11 +226,69 @@
             </ul>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" data-reveal>
             <h3>B.Sc. Applied Computer Science / Software Engineering</h3>
             <p class="timeline-meta">2022 – 2026 · Nordakademie, Elmshorn</p>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="section-kicker">Capabilities</p>
+          <h2>Skills</h2>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card" data-reveal>
+            <h3>AI &amp; Agentic Systems</h3>
+            <div class="tag-list"><span>LLM Applications</span><span>AI Agents</span><span>Agentic Workflows</span><span>RAG</span><span>Tool Use</span><span>MCP</span><span>Prompt Engineering</span><span>Human-in-the-Loop</span><span>Agent Evaluation</span></div>
+          </article>
+          <article class="skill-card" data-reveal>
+            <h3>Microsoft &amp; Enterprise AI</h3>
+            <div class="tag-list"><span>Microsoft 365</span><span>Microsoft Graph</span><span>Copilot Studio</span><span>Azure AI Foundry</span><span>Microsoft 365 Copilot</span><span>Teams</span><span>SharePoint</span><span>Outlook</span><span>Power Automate</span></div>
+          </article>
+          <article class="skill-card" data-reveal>
+            <h3>Agent Platforms &amp; Frameworks</h3>
+            <div class="tag-list"><span>NemoClaw</span><span>Hermes</span><span>OpenClaw</span><span>Semantic Kernel</span><span>LangChain</span><span>LangGraph</span><span>Microsoft Agent Framework</span></div>
+          </article>
+          <article class="skill-card" data-reveal>
+            <h3>Software &amp; Cloud Engineering</h3>
+            <div class="tag-list"><span>Python</span><span>Java</span><span>FastAPI</span><span>REST APIs</span><span>Docker</span><span>Git</span><span>CI/CD</span><span>Azure</span><span>AWS</span><span>Function Apps</span><span>SQL</span></div>
+          </article>
+          <article class="skill-card" data-reveal>
+            <h3>AI / ML</h3>
+            <div class="tag-list"><span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span><span>OpenCV</span><span>Hugging Face</span><span>MLflow</span><span>Vector Databases</span><span>Computer Vision</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GITHUB PROJECTS (AUTO-FETCHED) -->
+    <section id="github-projects" class="section section-alt">
+      <div class="container">
+        <h2>Open Source &amp; Personal Projects</h2>
+        <p class="github-intro">
+          A selection of personal projects from my GitHub profile, fetched automatically from
+          <a href="https://github.com/spasegirl" target="_blank" rel="noreferrer">
+            github.com/spasegirl
+          </a>.
+        </p>
+        <div id="github-projects-grid" class="github-grid">
+          <article class="github-card">
+            <h3>anschreiben-generatorr</h3>
+            <a href="https://github.com/spasegirl/anschreiben-generatorr" target="_blank" rel="noreferrer">View on GitHub ↗</a>
+          </article>
+          <article class="github-card">
+            <h3>resume_bias_analysis_datascience</h3>
+            <a href="https://github.com/spasegirl/resume_bias_analysis_datascience" target="_blank" rel="noreferrer">View on GitHub ↗</a>
+          </article>
+          <article class="github-card">
+            <h3>MINI_CHATBOT</h3>
+            <a href="https://github.com/spasegirl/MINI_CHATBOT" target="_blank" rel="noreferrer">View on GitHub ↗</a>
+          </article>
         </div>
       </div>
     </section>
@@ -247,9 +315,60 @@
     </div>
   </footer>
   <script>
-    // Simple current year in footer
-    
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const revealObserver = "IntersectionObserver" in window
+      ? new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 })
+      : null;
+
+    if (revealObserver) {
+      document.documentElement.classList.add("js-enabled");
+      document.querySelectorAll("[data-reveal]").forEach((item) => revealObserver.observe(item));
+    }
+
+    const navLinks = Array.from(document.querySelectorAll('nav a[href^="#"]'));
+    const navSections = navLinks
+      .map((link) => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+
+    if ("IntersectionObserver" in window) {
+      const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach((link) => {
+            const active = link.hash === `#${entry.target.id}`;
+            link.classList.toggle("is-active", active);
+            if (active) link.setAttribute("aria-current", "location");
+            else link.removeAttribute("aria-current");
+          });
+        });
+      }, { rootMargin: "-20% 0px -68% 0px" });
+      navSections.forEach((section) => navObserver.observe(section));
+    }
+
+    document.querySelectorAll(".system-node").forEach((node) => {
+      const edge = document.getElementById(node.dataset.edge);
+      const setEdge = (active) => {
+        if (edge) edge.classList.toggle("is-active", active || node.getAttribute("aria-pressed") === "true");
+      };
+
+      node.addEventListener("pointerenter", () => setEdge(true));
+      node.addEventListener("pointerleave", () => setEdge(false));
+      node.addEventListener("focus", () => setEdge(true));
+      node.addEventListener("blur", () => setEdge(false));
+      node.addEventListener("click", () => {
+        const pressed = node.getAttribute("aria-pressed") === "true";
+        node.setAttribute("aria-pressed", String(!pressed));
+        setEdge(!pressed);
+      });
+    });
 
     // ---- GitHub projects loader (FEATURED ONLY) ----
     const githubUsername = "spasegirl"; // change if needed
@@ -264,8 +383,13 @@
 
     if (githubProjectsGrid) {
       fetch(`https://api.github.com/users/${githubUsername}/repos?per_page=100`)
-        .then((res) => res.json())
+        .then((res) => {
+          if (!res.ok) throw new Error(`GitHub API responded with ${res.status}`);
+          return res.json();
+        })
         .then((repos) => {
+          if (!Array.isArray(repos)) throw new Error("GitHub API response was not a repository list");
+
           // Build a map for quick lookup
           const repoMap = new Map(repos.map(r => [r.name, r]));
 
@@ -274,11 +398,7 @@
             .map(name => repoMap.get(name))
             .filter(Boolean); // remove undefined (repos that don’t exist)
 
-          if (selected.length === 0) {
-            githubProjectsGrid.innerHTML =
-              "<p style='color: var(--muted); font-size: 0.9rem;'>No featured projects configured yet. Update the <code>featuredRepos</code> list in the script.</p>";
-            return;
-          }
+          if (selected.length === 0) return;
 
           githubProjectsGrid.innerHTML = selected.map(repo => {
             const name = repo.name.replace(/-/g, " ");
@@ -288,7 +408,7 @@
             const updated = new Date(repo.updated_at).toLocaleDateString();
 
             return `
-              <article class="project-card">
+              <article class="project-card github-card">
                 <h3>${name}</h3>
                 <p>${desc}</p>
                 <p class="project-meta">${lang} · ⭐ ${stars} · Updated ${updated}</p>
@@ -298,9 +418,7 @@
           }).join("");
         })
         .catch((err) => {
-          console.error("Error loading GitHub repos:", err);
-          githubProjectsGrid.innerHTML =
-            "<p style='color: var(--muted); font-size: 0.9rem;'>Couldn’t load GitHub projects right now.</p>";
+          console.warn("Unable to refresh featured GitHub repositories; showing the saved list.", err);
         });
     }
   </script>
